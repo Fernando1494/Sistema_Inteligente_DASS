@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cuestionario DASS-21</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="../index.html">
+                Sistema Inteligente DASS-21
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Contenido -->
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow">
+
+                    <div class="card-body p-4">
+
+                        <h2 class="text-center mb-3">
+                            Evaluación DASS-21
+                        </h2>
+
+                        <p class="text-center text-muted">
+                            Complete el siguiente formulario.
+                        </p>
+
+                        <!-- Barra de progreso -->
+
+                        <div class="progress mb-4">
+
+                            <div id="progressBar"
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                style="width:50%;">
+
+                                Paso 1 de 2
+
+                            </div>
+
+                        </div>
+
+                        <!-- Formulario -->
+
+                        <form id="questionnaireForm">
+
+                            <!-- ========================================= -->
+                            <!-- PASO 1 -->
+                            <!-- ========================================= -->
+
+                            <div id="step1">
+
+                                <h4 class="mb-4">
+                                    Datos demográficos
+                                </h4>
+
+                                <!-- Edad -->
+
+                                <div class="mb-3">
+
+                                    <label for="age" class="form-label">
+                                        Edad
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="age"
+                                        min="10"
+                                        max="100"
+                                        required>
+
+                                </div>
+
+                                <!-- Sexo -->
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Sexo
+                                    </label>
+
+                                    <div class="form-check">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="sexo"
+                                            value="1"
+                                            required>
+
+                                        <label class="form-check-label">
+                                            Masculino
+                                        </label>
+
+                                    </div>
+
+                                    <div class="form-check">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="sexo"
+                                            value="2">
+
+                                        <label class="form-check-label">
+                                            Femenino
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Estado civil -->
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Estado civil
+                                    </label>
+
+                                    <div class="form-check">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="civil"
+                                            value="0"
+                                            required>
+
+                                        <label class="form-check-label">
+                                            Soltero(a)
+                                        </label>
+
+                                    </div>
+
+                                    <div class="form-check">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="civil"
+                                            value="1">
+
+                                        <label class="form-check-label">
+                                            Casado(a)
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Nivel educativo -->
+
+                                <div class="mb-3">
+
+                                    <label for="education" class="form-label">
+                                        Nivel educativo
+                                    </label>
+
+                                    <select
+                                        id="education"
+                                        class="form-select"
+                                        required>
+
+                                        <option value="">
+                                            Seleccione...
+                                        </option>
+
+                                        <option value="1">Analfabeto</option>
+                                        <option value="2">Primaria</option>
+                                        <option value="3">Secundaria</option>
+                                        <option value="4">Superior</option>
+                                        <option value="5">Universitario</option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- Ocupación -->
+
+                                <div class="mb-3">
+
+                                    <label for="occupation" class="form-label">
+                                        Situación ocupacional
+                                    </label>
+
+                                    <select
+                                        id="occupation"
+                                        class="form-select"
+                                        required>
+
+                                        <option value="">
+                                            Seleccione...
+                                        </option>
+
+                                        <option value="1">Trabajo doméstico</option>
+                                        <option value="2">Empleado(a) de servicios</option>
+                                        <option value="3">Empresario(a)</option>
+                                        <option value="4">Estudiante</option>
+                                        <option value="5">Jornalero(a)</option>
+                                        <option value="6">Desempleado(a)</option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- Problemas para dormir -->
+
+                                <div class="mb-4">
+
+                                    <label class="form-label">
+                                        ¿Tiene problemas para dormir?
+                                    </label>
+
+                                    <div class="form-check">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="sleep"
+                                            value="0"
+                                            required>
+
+                                        <label class="form-check-label">
+                                            No
+                                        </label>
+
+                                    </div>
+
+                                    <div class="form-check">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="sleep"
+                                            value="1">
+
+                                        <label class="form-check-label">
+                                            Sí
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- ========================================= -->
+                            <!-- PASO 2 -->
+                            <!-- ========================================= -->
+
+                            <div id="step2" class="d-none">
+
+                                <h4 class="mb-4">
+                                    Cuestionario DASS-21
+                                </h4>
+
+                                <p class="text-muted mb-4">
+                                    Responda cada pregunta según cómo se ha sentido durante la última semana.
+                                </p>
+
+                                <div id="questionsContainer">
+
+                                    <!-- questionnaire.js generará aquí las 21 preguntas -->
+
+                                </div>
+
+                            </div>
+
+                            <!-- ========================================= -->
+                            <!-- BOTONES PASO 1 -->
+                            <!-- ========================================= -->
+
+                            <div
+                                id="step1Buttons"
+                                class="d-flex justify-content-between mt-4">
+
+                                <a
+                                    href="../index.html"
+                                    class="btn btn-secondary">
+
+                                    <i class="bi bi-arrow-left"></i>
+
+                                    Volver
+
+                                </a>
+
+                                <button
+                                    type="button"
+                                    id="nextButton"
+                                    class="btn btn-primary">
+
+                                    Siguiente
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </button>
+
+                            </div>
+
+                            <!-- ========================================= -->
+                            <!-- BOTONES PASO 2 -->
+                            <!-- ========================================= -->
+
+                            <div
+                                id="step2Buttons"
+                                class="d-flex justify-content-between mt-4 d-none">
+
+                                <button
+                                    type="button"
+                                    id="previousButton"
+                                    class="btn btn-secondary">
+
+                                    <i class="bi bi-arrow-left"></i>
+
+                                    Anterior
+
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-success">
+
+                                    <i class="bi bi-check-circle"></i>
+
+                                    Enviar evaluación
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Lógica del cuestionario -->
+
+    <script src="../assets/js/questionnaire.js"></script>
+
+</body>
+
+</html>

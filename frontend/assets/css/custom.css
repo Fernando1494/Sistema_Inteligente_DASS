@@ -5,3 +5,21 @@ body {
 .hero-image {
     max-width: 450px;
 }
+
+/* Radios y checkboxes */
+
+.form-check-input {
+    transform: scale(1.15);
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 2px solid #6c757d;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
