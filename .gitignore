@@ -1,4 +1,9 @@
 # ==========================================================
+# SISTEMA INTELIGENTE DASS
+# Archivo .gitignore
+# ==========================================================
+
+# ==========================================================
 # ENTORNOS VIRTUALES
 # ==========================================================
 
@@ -38,8 +43,8 @@ __pycache__/
 # ==========================================================
 
 Thumbs.db
-.DS_Store
 desktop.ini
+.DS_Store
 
 # ==========================================================
 # LOGS
@@ -48,11 +53,17 @@ desktop.ini
 *.log
 
 # ==========================================================
-# REPORTES GENERADOS
+# REPORTES GENERADOS AUTOMÁTICAMENTE
 # ==========================================================
 
 ML-training/reports/
 ML-training/results/
+
+# ==========================================================
+# DATASETS ORIGINALES
+# ==========================================================
+
+ML-training/data/raw/DASS.csv
 
 # ==========================================================
 # ARCHIVOS TEMPORALES
@@ -62,9 +73,10 @@ ML-training/results/
 *.temp
 
 # ==========================================================
-# NO IGNORAR
+# MANTENER VERSIONADOS
 # ==========================================================
 
-!backend-api/models/
+!ML-training/data/raw/README.md
+!ML-training/data/processed/
 !ML-training/models/
-!ML-training/data/
+!backend-api/models/
