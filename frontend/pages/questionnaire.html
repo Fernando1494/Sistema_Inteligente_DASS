@@ -2,42 +2,70 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cuestionario DASS-21</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
+    <title>
+        Cuestionario DASS-21
+    </title>
+
+    <!-- ===================================================== -->
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ===================================================== -->
 
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- ===================================================== -->
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
+    <!-- ===================================================== -->
+
+    <link
+        rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- ===================================================== -->
     <!-- CSS propio -->
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <!-- ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/custom.css">
 
 </head>
 
 <body class="bg-light">
 
-    <!-- Navbar -->
+    <!-- ===================================================== -->
+    <!-- NAVBAR -->
+    <!-- ===================================================== -->
 
     <nav class="navbar navbar-dark bg-primary shadow-sm">
 
         <div class="container">
 
-            <a class="navbar-brand fw-bold" href="../index.html">
+            <a
+                href="../index.html"
+                class="navbar-brand fw-bold">
+
                 Sistema Inteligente DASS-21
+
             </a>
 
         </div>
 
     </nav>
 
-    <!-- Contenido -->
+    <!-- ===================================================== -->
+    <!-- CONTENIDO -->
+    <!-- ===================================================== -->
 
-    <div class="container py-5">
+    <main class="container py-5">
 
         <div class="row justify-content-center">
 
@@ -47,19 +75,30 @@
 
                     <div class="card-body p-4">
 
+                        <!-- ========================================= -->
+                        <!-- TÍTULO -->
+                        <!-- ========================================= -->
+
                         <h2 class="text-center mb-3">
+
                             Evaluación DASS-21
+
                         </h2>
 
                         <p class="text-center text-muted">
+
                             Complete el siguiente formulario.
+
                         </p>
 
-                        <!-- Barra de progreso -->
+                        <!-- ========================================= -->
+                        <!-- BARRA DE PROGRESO -->
+                        <!-- ========================================= -->
 
                         <div class="progress mb-4">
 
-                            <div id="progressBar"
+                            <div
+                                id="progressBar"
                                 class="progress-bar progress-bar-striped progress-bar-animated"
                                 style="width:50%;">
 
@@ -69,7 +108,9 @@
 
                         </div>
 
-                        <!-- Formulario -->
+                        <!-- ========================================= -->
+                        <!-- FORMULARIO -->
+                        <!-- ========================================= -->
 
                         <form id="questionnaireForm">
 
@@ -77,49 +118,78 @@
                             <!-- PASO 1 -->
                             <!-- ========================================= -->
 
-                            <div id="step1">
+                            <section id="step1">
 
                                 <h4 class="mb-4">
+
                                     Datos demográficos
+
                                 </h4>
 
-                                <!-- Edad -->
+                                <!-- ===================================== -->
+                                <!-- EDAD -->
+                                <!-- ===================================== -->
 
                                 <div class="mb-3">
 
-                                    <label for="age" class="form-label">
+                                    <label
+                                        for="Q1_1"
+                                        class="form-label">
+
                                         Edad
+
                                     </label>
 
                                     <input
+
                                         type="number"
+
+                                        id="Q1_1"
+
                                         class="form-control"
-                                        id="age"
-                                        min="10"
+
+                                        min="15"
+
                                         max="100"
+
                                         required>
 
                                 </div>
 
-                                <!-- Sexo -->
+                                <!-- ===================================== -->
+                                <!-- SEXO -->
+                                <!-- ===================================== -->
 
                                 <div class="mb-3">
 
                                     <label class="form-label">
+
                                         Sexo
+
                                     </label>
 
                                     <div class="form-check">
 
                                         <input
+
                                             class="form-check-input"
+
                                             type="radio"
-                                            name="sexo"
+
+                                            id="Q1_2_1"
+
+                                            name="Q1_2"
+
                                             value="1"
+
                                             required>
 
-                                        <label class="form-check-label">
+                                        <label
+                                            class="form-check-label"
+                                            for="Q1_2_1">
+
                                             Masculino
+
                                         </label>
 
                                     </div>
@@ -127,38 +197,63 @@
                                     <div class="form-check">
 
                                         <input
+
                                             class="form-check-input"
+
                                             type="radio"
-                                            name="sexo"
+
+                                            id="Q1_2_2"
+
+                                            name="Q1_2"
+
                                             value="2">
 
-                                        <label class="form-check-label">
+                                        <label
+                                            class="form-check-label"
+                                            for="Q1_2_2">
+
                                             Femenino
+
                                         </label>
 
                                     </div>
 
                                 </div>
 
-                                <!-- Estado civil -->
+                                <!-- ===================================== -->
+                                <!-- ESTADO CIVIL -->
+                                <!-- ===================================== -->
 
                                 <div class="mb-3">
 
                                     <label class="form-label">
+
                                         Estado civil
+
                                     </label>
 
                                     <div class="form-check">
 
                                         <input
+
                                             class="form-check-input"
+
                                             type="radio"
-                                            name="civil"
+
+                                            id="Q1_3_0"
+
+                                            name="Q1_3"
+
                                             value="0"
+
                                             required>
 
-                                        <label class="form-check-label">
+                                        <label
+                                            class="form-check-label"
+                                            for="Q1_3_0">
+
                                             Soltero(a)
+
                                         </label>
 
                                     </div>
@@ -166,93 +261,193 @@
                                     <div class="form-check">
 
                                         <input
+
                                             class="form-check-input"
+
                                             type="radio"
-                                            name="civil"
+
+                                            id="Q1_3_1"
+
+                                            name="Q1_3"
+
                                             value="1">
 
-                                        <label class="form-check-label">
+                                        <label
+                                            class="form-check-label"
+                                            for="Q1_3_1">
+
                                             Casado(a)
+
                                         </label>
 
                                     </div>
 
                                 </div>
 
-                                <!-- Nivel educativo -->
+                                <!-- ===================================== -->
+                                <!-- NIVEL EDUCATIVO -->
+                                <!-- ===================================== -->
 
                                 <div class="mb-3">
 
-                                    <label for="education" class="form-label">
+                                    <label
+                                        for="Q1_4"
+                                        class="form-label">
+
                                         Nivel educativo
+
                                     </label>
 
                                     <select
-                                        id="education"
+
+                                        id="Q1_4"
+
                                         class="form-select"
+
                                         required>
 
                                         <option value="">
+
                                             Seleccione...
+
                                         </option>
 
-                                        <option value="1">Analfabeto</option>
-                                        <option value="2">Primaria</option>
-                                        <option value="3">Secundaria</option>
-                                        <option value="4">Superior</option>
-                                        <option value="5">Universitario</option>
+                                        <option value="1">
+
+                                            Analfabeto
+
+                                        </option>
+
+                                        <option value="2">
+
+                                            Primaria
+
+                                        </option>
+
+                                        <option value="3">
+
+                                            Secundaria
+
+                                        </option>
+
+                                        <option value="4">
+
+                                            Educación superior
+
+                                        </option>
+
+                                        <option value="5">
+
+                                            Posgrado
+
+                                        </option>
 
                                     </select>
 
                                 </div>
 
-                                <!-- Ocupación -->
+                                <!-- ===================================== -->
+                                <!-- SITUACIÓN OCUPACIONAL -->
+                                <!-- ===================================== -->
 
                                 <div class="mb-3">
 
-                                    <label for="occupation" class="form-label">
+                                    <label
+                                        for="Q1_5"
+                                        class="form-label">
+
                                         Situación ocupacional
+
                                     </label>
 
                                     <select
-                                        id="occupation"
+
+                                        id="Q1_5"
+
                                         class="form-select"
+
                                         required>
 
                                         <option value="">
+
                                             Seleccione...
+
                                         </option>
 
-                                        <option value="1">Trabajo doméstico</option>
-                                        <option value="2">Empleado(a) de servicios</option>
-                                        <option value="3">Empresario(a)</option>
-                                        <option value="4">Estudiante</option>
-                                        <option value="5">Jornalero(a)</option>
-                                        <option value="6">Desempleado(a)</option>
+                                        <option value="1">
+
+                                            Ama de casa
+
+                                        </option>
+
+                                        <option value="2">
+
+                                            Empleado(a) de servicios
+
+                                        </option>
+
+                                        <option value="3">
+
+                                            Empresario(a)
+
+                                        </option>
+
+                                        <option value="4">
+
+                                            Estudiante
+
+                                        </option>
+
+                                        <option value="5">
+
+                                            Jornalero(a)
+
+                                        </option>
+
+                                        <option value="6">
+
+                                            Desempleado(a)
+
+                                        </option>
 
                                     </select>
 
                                 </div>
 
-                                <!-- Problemas para dormir -->
+                                <!-- ===================================== -->
+                                <!-- PROBLEMAS PARA DORMIR -->
+                                <!-- ===================================== -->
 
                                 <div class="mb-4">
 
                                     <label class="form-label">
-                                        ¿Tiene problemas para dormir?
+
+                                        ¿Ha tenido problemas para dormir?
+
                                     </label>
 
                                     <div class="form-check">
 
                                         <input
+
                                             class="form-check-input"
+
                                             type="radio"
-                                            name="sleep"
+
+                                            id="Q1_6_0"
+
+                                            name="Q1_6"
+
                                             value="0"
+
                                             required>
 
-                                        <label class="form-check-label">
+                                        <label
+                                            class="form-check-label"
+                                            for="Q1_6_0">
+
                                             No
+
                                         </label>
 
                                     </div>
@@ -260,42 +455,71 @@
                                     <div class="form-check">
 
                                         <input
+
                                             class="form-check-input"
+
                                             type="radio"
-                                            name="sleep"
+
+                                            id="Q1_6_1"
+
+                                            name="Q1_6"
+
                                             value="1">
 
-                                        <label class="form-check-label">
+                                        <label
+                                            class="form-check-label"
+                                            for="Q1_6_1">
+
                                             Sí
+
                                         </label>
 
                                     </div>
 
                                 </div>
+                                <!-- ===================================== -->
+                                <!-- FIN PASO 1 -->
+                                <!-- ===================================== -->
 
-                            </div>
+                            </section>
 
                             <!-- ========================================= -->
                             <!-- PASO 2 -->
                             <!-- ========================================= -->
 
-                            <div id="step2" class="d-none">
+                            <section
+                                id="step2"
+                                class="d-none">
 
-                                <h4 class="mb-4">
+                                <h4 class="mb-3">
+
                                     Cuestionario DASS-21
+
                                 </h4>
 
                                 <p class="text-muted mb-4">
-                                    Responda cada pregunta según cómo se ha sentido durante la última semana.
+
+                                    Lea cuidadosamente cada afirmación e indique
+                                    cuánto se aplicó a usted durante los
+                                    últimos siete (7) días.
+
                                 </p>
+
+                                <!-- ===================================== -->
+                                <!-- CONTENEDOR DINÁMICO -->
+                                <!-- ===================================== -->
 
                                 <div id="questionsContainer">
 
-                                    <!-- questionnaire.js generará aquí las 21 preguntas -->
+                                    <!--
+                                        questionnaire.js generará
+                                        automáticamente las 21 preguntas
+                                        DASS-21 en este contenedor.
+                                    -->
 
                                 </div>
 
-                            </div>
+                            </section>
 
                             <!-- ========================================= -->
                             <!-- BOTONES PASO 1 -->
@@ -316,8 +540,11 @@
                                 </a>
 
                                 <button
-                                    type="button"
+
                                     id="nextButton"
+
+                                    type="button"
+
                                     class="btn btn-primary">
 
                                     Siguiente
@@ -337,8 +564,11 @@
                                 class="d-flex justify-content-between mt-4 d-none">
 
                                 <button
-                                    type="button"
+
                                     id="previousButton"
+
+                                    type="button"
+
                                     class="btn btn-secondary">
 
                                     <i class="bi bi-arrow-left"></i>
@@ -348,7 +578,11 @@
                                 </button>
 
                                 <button
+
+                                    id="submitButton"
+
                                     type="submit"
+
                                     class="btn btn-success">
 
                                     <i class="bi bi-check-circle"></i>
@@ -369,15 +603,74 @@
 
         </div>
 
+    </main>
+
+    <!-- ===================================================== -->
+    <!-- MODAL DE CARGA -->
+    <!-- Preparado para futuras versiones -->
+    <!-- ===================================================== -->
+
+    <div
+        class="modal fade"
+        id="loadingModal"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-body text-center py-5">
+
+                    <div
+                        class="spinner-border text-primary mb-3"
+                        role="status">
+
+                        <span class="visually-hidden">
+
+                            Cargando...
+
+                        </span>
+
+                    </div>
+
+                    <h5>
+
+                        Analizando respuestas...
+
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Espere unos segundos mientras el
+                        sistema realiza la predicción.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- Bootstrap -->
+    <!-- ===================================================== -->
+    <!-- BOOTSTRAP -->
+    <!-- ===================================================== -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Lógica del cuestionario -->
+    <!-- ===================================================== -->
+    <!-- LÓGICA DEL CUESTIONARIO -->
+    <!-- ===================================================== -->
 
-    <script src="../assets/js/questionnaire.js"></script>
+    <script
+        type="module"
+        src="../assets/js/questionnaire.js">
+
+    </script>
 
 </body>
 
