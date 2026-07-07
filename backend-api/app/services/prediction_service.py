@@ -6,30 +6,31 @@ los modelos de Machine Learning entrenados.
 import pandas as pd
 
 from app.core.constants import FEATURE_COLUMNS, LEVELS
+
 from app.core.model_loader import (
     depression_model,
     anxiety_model,
     stress_model
 )
 
+from app.services.questionnaire import (
+    evaluate_questionnaire
+)
+
 
 def predict(data: dict) -> dict:
     """
-    Realiza la predicción de:
-        - Depresión
-        - Ansiedad
-        - Estrés
+    Realiza:
 
-    Parámetros
-    ----------
-    data : dict
-        Diccionario con las 27 variables de entrada.
-
-    Retorna
-    -------
-    dict
-        Resultado de las tres predicciones.
+    1. Evaluación oficial del DASS-21
+    2. Predicción mediante Machine Learning
     """
+
+    # ==========================================================
+    # Evaluación oficial DASS-21
+    # ==========================================================
+
+    questionnaire_result = evaluate_questionnaire(data)
 
     # ==========================================================
     # Crear DataFrame
@@ -41,7 +42,7 @@ def predict(data: dict) -> dict:
     )
 
     # ==========================================================
-    # Predicciones
+    # Predicciones ML
     # ==========================================================
 
     depression_prediction = int(
@@ -56,11 +57,7 @@ def predict(data: dict) -> dict:
         stress_model.predict(df)[0]
     )
 
-    # ==========================================================
-    # Resultado
-    # ==========================================================
-
-    result = {
+    prediction_result = {
 
         "depression": {
 
@@ -88,4 +85,14 @@ def predict(data: dict) -> dict:
 
     }
 
-    return result
+    # ==========================================================
+    # Resultado final
+    # ==========================================================
+
+    return {
+
+        **questionnaire_result,
+
+        "prediction": prediction_result
+
+    }
