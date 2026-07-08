@@ -74,3 +74,53 @@ export async function predict(data) {
     }
 
 }
+
+// ==========================================================
+// LOCAL STORAGE
+// ==========================================================
+
+const STORAGE_KEY = "dass_prediction";
+
+// ==========================================================
+// GUARDAR RESULTADO
+// ==========================================================
+
+export function savePrediction(result) {
+
+    localStorage.setItem(
+
+        STORAGE_KEY,
+
+        JSON.stringify(result)
+
+    );
+
+}
+
+// ==========================================================
+// OBTENER RESULTADO
+// ==========================================================
+
+export function loadPrediction() {
+
+    const data = localStorage.getItem(STORAGE_KEY);
+
+    if (!data) {
+
+        return null;
+
+    }
+
+    return JSON.parse(data);
+
+}
+
+// ==========================================================
+// ELIMINAR RESULTADO
+// ==========================================================
+
+export function clearPrediction() {
+
+    localStorage.removeItem(STORAGE_KEY);
+
+}
