@@ -15,7 +15,7 @@ import {
     dassQuestions
 } from "./questions.js";
 
-import { predict } from "./api.js";
+import { predict, savePrediction } from "./api.js";
 
 
 // ==========================================================
@@ -436,21 +436,7 @@ async function submitQuestionnaire(event) {
 }
 
 
-// ==========================================================
-// GUARDAR RESULTADO
-// ==========================================================
 
-function savePrediction(result) {
-
-    localStorage.setItem(
-
-        "predictionResult",
-
-        JSON.stringify(result)
-
-    );
-
-}
 
 
 // ==========================================================
