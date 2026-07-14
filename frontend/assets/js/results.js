@@ -6,7 +6,6 @@ import { loadPrediction } from "./api.js";
 
 document.addEventListener("DOMContentLoaded", initializeResults);
 
-
 // ==========================================================
 // CARGAR RESULTADOS
 // ==========================================================
@@ -37,44 +36,34 @@ function initializeResults() {
 
 }
 
-
 // ==========================================================
 // RESULTADOS DASS-21
 // ==========================================================
 
 function showQuestionnaireResults(questionnaire) {
 
-
-    setLevelBadge(
+    updateDimension(
         "questionnaireDepression",
-        questionnaire.depression.level
+        "questionnaireDepressionScore",
+        "questionnaireDepressionBar",
+        questionnaire.depression
     );
 
-    document.getElementById("questionnaireDepressionScore").textContent =
-        `Puntaje: ${questionnaire.depression.score}`;
-
-
-
-    setLevelBadge(
+    updateDimension(
         "questionnaireAnxiety",
-        questionnaire.anxiety.level
+        "questionnaireAnxietyScore",
+        "questionnaireAnxietyBar",
+        questionnaire.anxiety
     );
 
-    document.getElementById("questionnaireAnxietyScore").textContent =
-        `Puntaje: ${questionnaire.anxiety.score}`;
-
-
-
-    setLevelBadge(
+    updateDimension(
         "questionnaireStress",
-        questionnaire.stress.level
+        "questionnaireStressScore",
+        "questionnaireStressBar",
+        questionnaire.stress
     );
-
-    document.getElementById("questionnaireStressScore").textContent =
-        `Puntaje: ${questionnaire.stress.score}`;
 
 }
-
 
 // ==========================================================
 // PREDICCIÓN DEL MODELO
@@ -82,68 +71,85 @@ function showQuestionnaireResults(questionnaire) {
 
 function showPredictionResults(prediction) {
 
-
     setLevelBadge(
         "predictionDepression",
         prediction.depression.level
     );
-
 
     setLevelBadge(
         "predictionAnxiety",
         prediction.anxiety.level
     );
 
-
     setLevelBadge(
         "predictionStress",
         prediction.stress.level
     );
 
+}
+
+// ==========================================================
+// ACTUALIZAR UNA DIMENSIÓN
+// ==========================================================
+
+function updateDimension(
+    levelId,
+    scoreId,
+    progressId,
+    data
+) {
+
+    setLevelBadge(levelId, data.level);
+
+    document.getElementById(scoreId).textContent =
+        `Puntaje: ${data.score} de 42`;
+
+    updateProgressBar(progressId, data.score);
 
 }
 
-
 // ==========================================================
-// BADGES DINÁMICOS SEGÚN NIVEL
+// BADGES
 // ==========================================================
 
 function setLevelBadge(elementId, level) {
 
-
     const element = document.getElementById(elementId);
-
 
     if (!element) return;
 
-
     element.textContent = level;
 
-
-    element.className = "badge";
-
+    element.className = "badge fs-6";
 
     const normalized = level
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
-
     if (normalized.includes("normal")) {
 
-        element.classList.add("bg-success");
+        element.classList.add(
+            "bg-success"
+        );
 
     }
 
     else if (normalized.includes("leve")) {
 
-        element.classList.add("bg-warning", "text-dark");
+        element.classList.add(
+            "bg-warning",
+            "text-dark"
+        );
 
     }
 
     else if (normalized.includes("moderado")) {
 
-        element.classList.add("bg-warning", "text-dark");
+        element.classList.add(
+            "bg-warning",
+            "text-dark"
+        );
 
     }
 
@@ -152,24 +158,57 @@ function setLevelBadge(elementId, level) {
         !normalized.includes("extremadamente")
     ) {
 
-        element.classList.add("bg-danger");
+        element.classList.add(
+            "bg-danger"
+        );
 
     }
 
-    else if (normalized.includes("extremadamente")) {
+    else if (
+        normalized.includes("extremadamente")
+    ) {
 
-        element.classList.add("bg-dark");
+        element.classList.add(
+            "bg-dark"
+        );
 
     }
 
     else {
 
-        element.classList.add("bg-secondary");
+        element.classList.add(
+            "bg-secondary"
+        );
 
     }
 
 }
 
+// ==========================================================
+// BARRAS DE PROGRESO
+// ==========================================================
+
+function updateProgressBar(id, score) {
+
+    const bar = document.getElementById(id);
+
+    if (!bar) return;
+
+    const percentage = Math.min(
+        (score / 42) * 100,
+        100
+    );
+
+    bar.style.width = `${percentage}%`;
+
+    bar.setAttribute(
+        "aria-valuenow",
+        score
+    );
+
+    bar.textContent = `${Math.round(percentage)}%`;
+
+}
 
 // ==========================================================
 // RECOMENDACIONES
@@ -181,20 +220,17 @@ function showRecommendations(questionnaire) {
 
     list.innerHTML = "";
 
-
     addRecommendation(
         list,
         "Depresión",
         questionnaire.depression.recommendation
     );
 
-
     addRecommendation(
         list,
         "Ansiedad",
         questionnaire.anxiety.recommendation
     );
-
 
     addRecommendation(
         list,
@@ -204,15 +240,11 @@ function showRecommendations(questionnaire) {
 
 }
 
-
 function addRecommendation(container, title, recommendation) {
-
 
     const item = document.createElement("li");
 
-
     item.className = "list-group-item";
-
 
     item.innerHTML = `
 
@@ -222,11 +254,9 @@ function addRecommendation(container, title, recommendation) {
 
     `;
 
-
     container.appendChild(item);
 
 }
-
 
 // ==========================================================
 // INTERPRETACIÓN GENERAL
@@ -234,45 +264,52 @@ function addRecommendation(container, title, recommendation) {
 
 function showGeneralInterpretation(result) {
 
-
-    const interpretation =
-        document.getElementById("generalInterpretation");
-
+    const interpretation = document.getElementById(
+        "generalInterpretation"
+    );
 
     const depression =
         result.questionnaire.depression.level;
 
-
     const anxiety =
         result.questionnaire.anxiety.level;
-
 
     const stress =
         result.questionnaire.stress.level;
 
-
     interpretation.innerHTML = `
 
-        El cuestionario DASS-21 identifica los siguientes niveles:
-
-        <strong>Depresión:</strong> ${depression},
-
-        <strong>Ansiedad:</strong> ${anxiety} y
-
-        <strong>Estrés:</strong> ${stress}.
+        <strong>Resumen de la evaluación</strong>
 
         <br><br>
 
-        La predicción obtenida mediante el modelo de Machine Learning
+        El cuestionario DASS-21 identifica los siguientes niveles:
 
-        se muestra en la sección correspondiente para fines de apoyo
+        <ul class="mt-2 mb-2">
 
-        a la evaluación.
+            <li>
+                <strong>Depresión:</strong> ${depression}
+            </li>
+
+            <li>
+                <strong>Ansiedad:</strong> ${anxiety}
+            </li>
+
+            <li>
+                <strong>Estrés:</strong> ${stress}
+            </li>
+
+        </ul>
+
+        La predicción obtenida mediante el modelo de
+        <strong>Machine Learning</strong> se presenta como una
+        herramienta de apoyo para la detección temprana del
+        riesgo y no sustituye una evaluación realizada por un
+        profesional de la salud mental.
 
     `;
 
 }
-
 
 // ==========================================================
 // DISCLAIMER
@@ -280,6 +317,7 @@ function showGeneralInterpretation(result) {
 
 function showDisclaimer(text) {
 
-    document.getElementById("disclaimer").textContent = text;
+    document.getElementById("disclaimer").textContent =
+        text;
 
 }
