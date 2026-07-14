@@ -1,8 +1,3 @@
-// ==========================================================
-// RESULTS.JS
-// Sistema Inteligente DASS
-// ==========================================================
-
 import { loadPrediction } from "./api.js";
 
 // ==========================================================
@@ -10,6 +5,7 @@ import { loadPrediction } from "./api.js";
 // ==========================================================
 
 document.addEventListener("DOMContentLoaded", initializeResults);
+
 
 // ==========================================================
 // CARGAR RESULTADOS
@@ -41,31 +37,44 @@ function initializeResults() {
 
 }
 
+
 // ==========================================================
 // RESULTADOS DASS-21
 // ==========================================================
 
 function showQuestionnaireResults(questionnaire) {
 
-    document.getElementById("questionnaireDepression").textContent =
-        questionnaire.depression.level;
+
+    setLevelBadge(
+        "questionnaireDepression",
+        questionnaire.depression.level
+    );
 
     document.getElementById("questionnaireDepressionScore").textContent =
         `Puntaje: ${questionnaire.depression.score}`;
 
-    document.getElementById("questionnaireAnxiety").textContent =
-        questionnaire.anxiety.level;
+
+
+    setLevelBadge(
+        "questionnaireAnxiety",
+        questionnaire.anxiety.level
+    );
 
     document.getElementById("questionnaireAnxietyScore").textContent =
         `Puntaje: ${questionnaire.anxiety.score}`;
 
-    document.getElementById("questionnaireStress").textContent =
-        questionnaire.stress.level;
+
+
+    setLevelBadge(
+        "questionnaireStress",
+        questionnaire.stress.level
+    );
 
     document.getElementById("questionnaireStressScore").textContent =
         `Puntaje: ${questionnaire.stress.score}`;
 
 }
+
 
 // ==========================================================
 // PREDICCIÓN DEL MODELO
@@ -73,16 +82,94 @@ function showQuestionnaireResults(questionnaire) {
 
 function showPredictionResults(prediction) {
 
-    document.getElementById("predictionDepression").textContent =
-        prediction.depression.level;
 
-    document.getElementById("predictionAnxiety").textContent =
-        prediction.anxiety.level;
+    setLevelBadge(
+        "predictionDepression",
+        prediction.depression.level
+    );
 
-    document.getElementById("predictionStress").textContent =
-        prediction.stress.level;
+
+    setLevelBadge(
+        "predictionAnxiety",
+        prediction.anxiety.level
+    );
+
+
+    setLevelBadge(
+        "predictionStress",
+        prediction.stress.level
+    );
+
 
 }
+
+
+// ==========================================================
+// BADGES DINÁMICOS SEGÚN NIVEL
+// ==========================================================
+
+function setLevelBadge(elementId, level) {
+
+
+    const element = document.getElementById(elementId);
+
+
+    if (!element) return;
+
+
+    element.textContent = level;
+
+
+    element.className = "badge";
+
+
+    const normalized = level
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+
+    if (normalized.includes("normal")) {
+
+        element.classList.add("bg-success");
+
+    }
+
+    else if (normalized.includes("leve")) {
+
+        element.classList.add("bg-warning", "text-dark");
+
+    }
+
+    else if (normalized.includes("moderado")) {
+
+        element.classList.add("bg-warning", "text-dark");
+
+    }
+
+    else if (
+        normalized.includes("severo") &&
+        !normalized.includes("extremadamente")
+    ) {
+
+        element.classList.add("bg-danger");
+
+    }
+
+    else if (normalized.includes("extremadamente")) {
+
+        element.classList.add("bg-dark");
+
+    }
+
+    else {
+
+        element.classList.add("bg-secondary");
+
+    }
+
+}
+
 
 // ==========================================================
 // RECOMENDACIONES
@@ -94,43 +181,38 @@ function showRecommendations(questionnaire) {
 
     list.innerHTML = "";
 
+
     addRecommendation(
-
         list,
-
         "Depresión",
-
         questionnaire.depression.recommendation
-
     );
 
+
     addRecommendation(
-
         list,
-
         "Ansiedad",
-
         questionnaire.anxiety.recommendation
-
     );
 
+
     addRecommendation(
-
         list,
-
         "Estrés",
-
         questionnaire.stress.recommendation
-
     );
 
 }
 
+
 function addRecommendation(container, title, recommendation) {
+
 
     const item = document.createElement("li");
 
+
     item.className = "list-group-item";
+
 
     item.innerHTML = `
 
@@ -140,9 +222,11 @@ function addRecommendation(container, title, recommendation) {
 
     `;
 
+
     container.appendChild(item);
 
 }
+
 
 // ==========================================================
 // INTERPRETACIÓN GENERAL
@@ -150,28 +234,45 @@ function addRecommendation(container, title, recommendation) {
 
 function showGeneralInterpretation(result) {
 
-    const interpretation = document.getElementById("generalInterpretation");
 
-    const depression = result.questionnaire.depression.level;
+    const interpretation =
+        document.getElementById("generalInterpretation");
 
-    const anxiety = result.questionnaire.anxiety.level;
 
-    const stress = result.questionnaire.stress.level;
+    const depression =
+        result.questionnaire.depression.level;
+
+
+    const anxiety =
+        result.questionnaire.anxiety.level;
+
+
+    const stress =
+        result.questionnaire.stress.level;
+
 
     interpretation.innerHTML = `
 
         El cuestionario DASS-21 identifica los siguientes niveles:
+
         <strong>Depresión:</strong> ${depression},
+
         <strong>Ansiedad:</strong> ${anxiety} y
+
         <strong>Estrés:</strong> ${stress}.
+
         <br><br>
+
         La predicción obtenida mediante el modelo de Machine Learning
-        se muestra en la sección correspondiente para fines de apoyo a la
-        evaluación.
+
+        se muestra en la sección correspondiente para fines de apoyo
+
+        a la evaluación.
 
     `;
 
 }
+
 
 // ==========================================================
 // DISCLAIMER
