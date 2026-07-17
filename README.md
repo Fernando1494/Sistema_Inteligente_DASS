@@ -28,6 +28,14 @@ Sistema_Inteligente_DASS/
 
 # Componentes
 
+Capturas del proyecto
+
+Las capturas de pantalla del funcionamiento del sistema se encuentran en la carpeta:
+
+screenshots/
+
+Esta carpeta incluye imágenes de las principales funcionalidades del proyecto, como la interfaz de inicio, el cuestionario DASS-21 y la visualización de los resultados generados por el sistema.
+
 ## ML-training
 
 Contiene todo el proceso relacionado con Machine Learning.
